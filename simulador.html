@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Alstom VERSÃO 0.01A - Alstom Software OPS Screen</title>
+</head>
+
+<body
+    style="display: flex; justify-content: center; align-items: center; text-align: center; flex-direction: column;margin: 130px;">
+    <audio loop autoplay>
+        <source src="sons/loop.wav" type="audio/wav">
+    </audio>
+    <img src="imagem/download.png"><br>
+    <p style="font-weight: 700;">Welcome to Alstom RAIL embedded system emulator/simulator, this website application is desired to emulate the Primary Screen Modules from embedded systems from Alstom in order to train, emulate, or show the capacities of the system! </p>
+    Select your desired type of operation: <br>
+    <select id="select_ops" onchange="teste()">
+        <option value="1">ATO/ATC</option>
+        <option value="2">CBTC</option>
+    </select><br>
+    <div id="texto">ATC(Automatic Train Control) or ATO(Automatic Train Operation) is a system that utilizes
+        phyiscal blocks to rely the track limit and estimate stop time and max speed on sections in the track</div><br>
+    <button id="parametro" onclick="setparameters()">Set simulations parameters</button>
+    <div id="texto2" style="display: none;">
+        Select from below the fleet you want to use:
+        <select id="select_fleet" onchange="selectfleet()">
+            <option value="G">G</option>
+            <option value="I">I</option>
+            <option value="L">L</option>
+            <option value="3" disabled>K</option>
+        </select>
+        <br>
+        <div id="div_imagem">
+            <img id="imagemfleet" src="fleet/Alstom 2008.PNG">
+        </div>
+        <br>
+        Insert the default stop time and time beetween each train:
+        <br>
+        <input type="number" id="ipt_stopTime" placeholder="Stop Time">
+        <br>
+        <input type="number" id="ipt_timeEachTrain" placeholder="Time beetween each train">
+    </div>
+</body>
+
+</html>
+<script>
+
+    function teste() {
+        var ops = select_ops.value;
+        if (ops == 1)
+            texto.innerHTML = `ATC(Automatic Train Control) or ATO(Automatic Train Operation) is a system that utilizes phyiscal blocks to rely the track limit and estimate stop time and max speed on sections in the track`
+        else {
+            texto.innerHTML = `CBTC(Comunication Based on Train-Control) system is a system that utilizes logical blocks to rely the track limit and estimate stop time and max speed on sections in the track`
+        }
+    }
+    function setparameters() {
+        texto2.innerHTML += `
+        <audio autoplay>
+        <source src="sons/startup.wav" type="audio/wav">
+         </audio>`
+        document.getElementById("select_ops").disabled = true;
+        document.getElementById("parametro").disabled = true;
+        setTimeout(function () {
+            texto2.style += "display:flex;"
+        }
+            , 2500);
+
+
+
+    }
+    function selectfleet() {
+        var select = select_fleet.value;
+
+        if (select === "G")
+            div_imagem.innerHTML = '<img id="imagemfleet" src="fleet/Alstom 2008.PNG">'
+        else if (select === "I")
+            div_imagem.innerHTML = '<img id="imagemfleet" src="fleet/Budd Mafersa Siemens 2010.PNG">'
+        else if (select === "L")
+            div_imagem.innerHTML = '<img id="imagemfleet" src="fleet/Mafersa Alstom 2011 copy 2.PNG">';
+    }
+</script>
