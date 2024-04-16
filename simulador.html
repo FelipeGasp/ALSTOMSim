@@ -7,8 +7,7 @@
     <title>Simulador Alstom VERSÃO 0.01A - Alstom Software OPS Screen</title>
 </head>
 
-<body
-    style="display: flex; justify-content: center; align-items: center; text-align: center; flex-direction: column;margin: 130px;">
+<body style="display: flex; justify-content: center; align-items: center; text-align: center; flex-direction: column;margin: 130px;">
     <audio loop autoplay>
         <source src="sons/loop.wav" type="audio/wav">
     </audio>
@@ -22,6 +21,7 @@
     <div id="texto">ATC(Automatic Train Control) or ATO(Automatic Train Operation) is a system that utilizes
         phyiscal blocks to rely the track limit and estimate stop time and max speed on sections in the track</div><br>
     <button id="parametro" onclick="setparameters()">Set simulations parameters</button>
+    <br>
     <div id="texto2" style="display: none;">
         Select from below the fleet you want to use:
         <select id="select_fleet" onchange="selectfleet()">
@@ -45,6 +45,18 @@
 
 </html>
 <script>
+    function launchFullScreen(element) {
+  if(element.requestFullScreen) {
+    element.requestFullScreen();
+  } else if(element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+  } else if(element.webkitRequestFullScreen) {
+    element.webkitRequestFullScreen();
+  }
+}
+
+// Launch fullscreen for browsers that support it!
+launchFullScreen(document.documentElement); // the whole page
 
     function teste() {
         var ops = select_ops.value;
@@ -63,10 +75,9 @@
         document.getElementById("parametro").disabled = true;
         setTimeout(function () {
             texto2.style += "display:flex;"
+            window.scrollBy(0,500);
         }
             , 2500);
-
-
 
     }
     function selectfleet() {
