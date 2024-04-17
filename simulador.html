@@ -35,7 +35,7 @@
             <img id="imagemfleet" src="fleet/Alstom 2008.PNG">
         </div>
         <br>
-        Insert the default stop time and time beetween each train:
+        Insert the default stop time(s) and time beetween each train(Min):
         <br>
         <input type="number" id="ipt_stopTime" placeholder="Stop Time">
         <br>
@@ -82,7 +82,6 @@ launchFullScreen(document.documentElement); // the whole page
     }
     function selectfleet() {
         var select = select_fleet.value;
-
         if (select === "G")
             div_imagem.innerHTML = '<img id="imagemfleet" src="fleet/Alstom 2008.PNG">'
         else if (select === "I")
