@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-//transform rotate position: absolute
+<!--transform rotate position: absolute-->
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,7 @@
 </head>
 
 <body style="display: flex; justify-content: center; align-items: center; text-align: center; flex-direction: column;margin: 130px;">
-    <audio loop autoplay>
+    <audio loop autoplay> 
         <source src="sons/loop.wav" type="audio/wav">
     </audio>
     <img src="imagem/download.png"><br>
@@ -41,6 +41,13 @@
         <input type="number" id="ipt_stopTime" placeholder="Stop Time">
         <br>
         <input type="number" id="ipt_timeEachTrain" placeholder="Time beetween each train">
+        <br>
+        Define your line of operation:
+        <select id="select_line">
+            <option disabled selected>Select a option</option>
+            <option value="0">Line 1 - Metro de São Paulo 🇧🇷</option>
+            <option value="1">Line 2 - Metro de São Paulo 🇧🇷</option>
+        </select>
     </div>
 </body>
 
@@ -67,6 +74,7 @@ launchFullScreen(document.documentElement); // the whole page
             texto.innerHTML = `CBTC(Comunication Based on Train-Control) system is a system that utilizes logical blocks to rely the track limit and estimate stop time and max speed on sections in the track`
         }
     }
+    //Set feito para mostrar parametrização da simulação
     function setparameters() {
         texto2.innerHTML += `
         <audio autoplay>
@@ -79,8 +87,12 @@ launchFullScreen(document.documentElement); // the whole page
             window.scrollBy(0,500);
         }
             , 2500);
+            document.getElementById('select_line')
+        }
+        function definirParametros(){
 
-    }
+        }
+
     function selectfleet() {
         var select = select_fleet.value;
         if (select === "G")
